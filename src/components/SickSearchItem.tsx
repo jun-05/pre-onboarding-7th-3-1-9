@@ -23,6 +23,11 @@ export function SickSearchItem({
 }
 
 const sickItem = css`
+  &:hover {
+    background-color: #e6e6e6;
+    border-radius: 10px;
+  }
+
   position: relative;
   font-size: 1.4rem;
   padding: 10px 20px;
