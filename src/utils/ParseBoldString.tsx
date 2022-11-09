@@ -1,4 +1,7 @@
-export const ParseBoldWord = ({ sickName, keyword }: { sickName: string; keyword: string }) => {
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+
+export const ParseBoldString = ({ sickName, keyword }: { sickName: string; keyword: string }) => {
   const result = sickName.match(new RegExp(keyword, 'i'));
 
   // TODO: 이걸 컴포넌트로.. 해도 되나?
@@ -19,10 +22,14 @@ export const ParseBoldWord = ({ sickName, keyword }: { sickName: string; keyword
   const afterBoldText = sickName.slice(result.index + keyword.length);
 
   return (
-    <>
+    <p
+      css={css`
+        padding-left: 24px;
+      `}
+    >
       {beforeBoldText}
       <strong>{boldText}</strong>
       {afterBoldText}
-    </>
+    </p>
   );
 };
