@@ -32,7 +32,16 @@ const style = css`
     text-decoration: none;
   }
 
+  input {
+    appearance: none;
+    border: 0;
+  }
+
   :root {
     font-size: 10px;
+  }
+
+  body {
+    background-color: #cae9ff;
   }
 `;
