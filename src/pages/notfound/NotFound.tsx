@@ -15,11 +15,9 @@ const NotFound: React.FC = () => {
         Page not found!
         {/* 페이지를 찾을 수 없습니다. */}
       </h2>
-      <h3>
-        Sorry! The page you're looking for is not here.
-      </h3>
+      <h3>Sorry! The page you're looking for is not here.</h3>
       {/* <Button type="button" text="메인 화면으로 >" width="200px" height="44px" fontSize="1.3em" background="#000" onClick={navigateHome} /> */}
     </div>
   );
-}
+};
 export default NotFound;

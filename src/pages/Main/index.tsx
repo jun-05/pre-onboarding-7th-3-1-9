@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import useGetSickItem from '../../hooks/useGetSickItem';
 import AutoComplete from './AutoComplete';
 import SearchBar from './SearchBar';
 
 const MainPage = () => {
+  useGetSickItem();
+
   return (
     <>
       <StyledHeader />
       <StyledMain>
         <StyledTitle>
           <h2>
-          국내 모든 임상시험 검색하고<br />
-          온라인으로 참여하기
+            국내 모든 임상시험 검색하고
+            <br />
+            온라인으로 참여하기
           </h2>
         </StyledTitle>
         <StyledSearchDiv>
@@ -36,6 +40,8 @@ const StyledMain = styled.main`
   width: 100%;
   height: 462px;
   background-color: #cae9ff;
+
+  padding: 80px 0 160px;
 `;
 
 const StyledTitle = styled.div`
@@ -47,7 +53,6 @@ const StyledTitle = styled.div`
     font-weight: bold;
     line-height: 3rem;
     text-align: center;
-    
   }
 `;
 

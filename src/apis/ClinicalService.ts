@@ -22,14 +22,13 @@ export const getSick = async (param: string): Promise<ISicks[]> => {
         params: payload,
       };
       const { data } = await instance.get(`/${URL_SICK}`, config);
-
-      cacheStorage.put(queryStr, new Response(JSON.stringify(data)));
+      cacheStorage.put(queryStr, new Response(JSON.stringify(data.slice(0, 7))));
       return data;
     }
 
     const cached = await cachedResponse?.json();
     return cached;
   }
-  
+
   return [];
 };
