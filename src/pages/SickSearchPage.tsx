@@ -1,42 +1,39 @@
-import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { fetchSickSearchResultList } from '../apis/fetchSickSearchResultList';
+import { SickSearchItem } from '../components/SickSearchItem';
 import { SickItem } from '../model/SickItem';
-import { ParseBoldWord } from '../utils/ParseBoldWord';
 
 export function SickSearchPage() {
-  const [keyword, setKeyword] = useState('');
-  const [searchResultList, setSearchResultList] = useState<SickItem[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [sickSearchList, setSickSearchList] = useState<SickItem[]>([]);
 
   useEffect(() => {
     (async () => {
-      const list = await fetchSickSearchResultList({ keyword });
-      setSearchResultList(list);
-    })();
-  }, [keyword]);
+      const list = await fetchSickSearchResultList({ keyword: searchKeyword });
 
-  if (searchResultList == null || keyword.trim() === '') {
+      setSickSearchList(list);
+    })();
+  }, [searchKeyword]);
+
+  if (sickSearchList == null || searchKeyword.trim() === '') {
     return (
       <>
-        <input type="search" onChange={e => setKeyword(e.target.value)} />
+        <input type="search" onChange={e => setSearchKeyword(e.target.value)} />
         <p>검색어 없음</p>
       </>
     );
   }
+
   return (
     <>
-      <input type="search" onChange={e => setKeyword(e.target.value)} />
+      <input type="search" onChange={e => setSearchKeyword(e.target.value)} />
       <ul>
-        {searchResultList.map(result => (
-          <SearchResultItem key={result.sickCd}>
-            <ParseBoldWord sickName={result.sickNm} keyword={keyword} />
-          </SearchResultItem>
+        {sickSearchList.map(result => (
+          <Fragment key={result.sickCd}>
+            <SickSearchItem result={result} searchKeyword={searchKeyword} />
+          </Fragment>
         ))}
       </ul>
     </>
   );
 }
-
-const SearchResultItem = styled.li`
-  border: 1px solid;
-`;
