@@ -3,6 +3,7 @@
 import { css } from '@emotion/react';
 import { SickItem } from '../model/SickItem';
 import { ParseBoldWord } from '../utils/ParseBoldWord';
+import { SearchIcon } from './SearchIcon';
 
 export function SickSearchItem({
   result,
@@ -13,12 +14,22 @@ export function SickSearchItem({
 }) {
   return (
     <li css={sickItem}>
-      <ParseBoldWord sickName={result.sickNm} keyword={searchKeyword} />
+      <SearchIcon />
+      <p>
+        <ParseBoldWord sickName={result.sickNm} keyword={searchKeyword} />
+      </p>
     </li>
   );
 }
 
 const sickItem = css`
-  border: 1px solid;
+  position: relative;
   font-size: 1.4rem;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+
+  p {
+    padding-left: 24px;
+  }
 `;
