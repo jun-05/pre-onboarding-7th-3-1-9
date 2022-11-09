@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
-import { ChangeEventHandler, MouseEventHandler } from 'react';
+import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler } from 'react';
 import { SearchIcon } from './SearchIcon';
 
 export function SickSearchInput({
   onChange,
   onClick,
+  onKeyUp,
 }: {
   onChange: ChangeEventHandler<HTMLInputElement>;
   onClick: MouseEventHandler<HTMLParagraphElement>;
+  onKeyUp: KeyboardEventHandler<HTMLInputElement>;
 }) {
   return (
     <>
@@ -18,6 +20,7 @@ export function SickSearchInput({
           placeholder="질환명을 입력해주세요"
           onChange={onChange}
           onClick={onClick}
+          onKeyUp={onKeyUp}
         />
       </Container>
     </>

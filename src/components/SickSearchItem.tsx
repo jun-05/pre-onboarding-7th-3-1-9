@@ -2,28 +2,30 @@
 
 import { css } from '@emotion/react';
 import { SickItem } from '../model/SickItem';
-import { ParseBoldWord } from '../utils/ParseBoldWord';
+import { ParseBoldString } from '../utils/ParseBoldString';
 import { SearchIcon } from './SearchIcon';
 
 export function SickSearchItem({
   result,
   searchKeyword,
+  selectIndex,
+  index,
 }: {
   result: SickItem;
   searchKeyword: string;
+  selectIndex: number;
+  index: number;
 }) {
   return (
-    <li css={sickItem}>
+    <li css={sickItem} className={index === selectIndex ? 'select' : ''}>
       <SearchIcon />
-      <p>
-        <ParseBoldWord sickName={result.sickNm} keyword={searchKeyword} />
-      </p>
+      <ParseBoldString sickName={result.sickNm} keyword={searchKeyword} />
     </li>
   );
 }
 
 const sickItem = css`
-  &:hover {
+  &.select {
     background-color: #e6e6e6;
     border-radius: 10px;
   }
@@ -33,8 +35,4 @@ const sickItem = css`
   padding: 10px 20px;
   display: flex;
   align-items: center;
-
-  p {
-    padding-left: 24px;
-  }
 `;
