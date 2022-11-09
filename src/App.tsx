@@ -1,5 +1,11 @@
+import { Routert } from './Routert';
+
 function App() {
-  return <div>test3</div>;
+  return (
+    <>
+      <Routert />
+    </>
+  );
 }
 
 export default App;
