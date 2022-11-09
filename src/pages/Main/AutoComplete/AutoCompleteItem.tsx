@@ -3,24 +3,21 @@ import styled from 'styled-components';
 import { useAppSelector } from '../../../redux/hooks';
 
 const AutoCompleteItem = () => {
-  const { searchWord, items, isLoading } = useAppSelector(({ search }) => search);
-
+  const { searchWord, items, isLoading, selectIndex } = useAppSelector(({ search }) => search);
   return (
     <>
-      {items.length === 0 && searchWord === '' && (
-        <DropDownItem>
-          <span className="search_text">검색어가 없습니다</span>
-        </DropDownItem>
-      )}
       {searchWord !== '' && (
-        <DropDownItem>
-          <span className="search_icon">
-            <Magnifying />
-          </span>
-          <span className="search_text">
-            <span className="font_bold">{searchWord}</span>
-          </span>
-        </DropDownItem>
+        <>
+          <DropDownItem>
+            <span className="search_icon">
+              <Magnifying />
+            </span>
+            <span className="search_text">
+              <span className="font_bold">{searchWord}</span>
+            </span>
+          </DropDownItem>
+          <p>추천 검색어</p>
+        </>
       )}
       {isLoading && (
         <DropDownItem>
@@ -30,7 +27,7 @@ const AutoCompleteItem = () => {
       {items.map(({ sickNm }, index) => {
         const textArray = sickNm.split(searchWord);
         return (
-          <DropDownItem key={index}>
+          <DropDownItem key={index} className={selectIndex === index ? 'over' : ''}>
             <span className="search_icon">
               <Magnifying />
             </span>
@@ -43,6 +40,11 @@ const AutoCompleteItem = () => {
           </DropDownItem>
         );
       })}
+      {items.length === 0 && (
+        <DropDownItem>
+          <span className="search_text">검색어가 없습니다</span>
+        </DropDownItem>
+      )}
     </>
   );
 };
@@ -51,9 +53,12 @@ const DropDownItem = styled.li`
   position: relative;
   padding: 0 16px 0 42px;
   height: 42px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
-  &.selected {
-    background-color: lightgray;
+  &.over {
+    background-color: #e2e2e2;
   }
   span.search_icon {
     position: absolute;
@@ -65,6 +70,7 @@ const DropDownItem = styled.li`
   }
   span.search_text {
     line-height: 42px;
+
     span.font_bold {
       font-weight: bold;
     }

@@ -6,7 +6,7 @@ import AutoCompleteItem from './AutoCompleteItem';
 const AutoCompleteUI = () => {
   const { isOpen } = useAppSelector(({ search }) => search);
   return (
-    <DropDownBox className={isOpen ? 'active' : 'active'}>
+    <DropDownBox className={isOpen ? 'active' : ''}>
       <AutoCompleteItem />
     </DropDownBox>
   );
@@ -34,6 +34,7 @@ const DropDownBox = styled.ul`
   p {
     padding-left: 16px;
     font-size: 12px;
+    line-height: 12px;
     color: #6c737b;
   }
 `;

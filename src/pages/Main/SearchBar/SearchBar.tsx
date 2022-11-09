@@ -7,6 +7,7 @@ const SearchBarUI = ({
   onChange,
   onFocus,
   onBlur,
+  onKeyDown,
 }: React.InputHTMLAttributes<HTMLInputElement>) => {
   const { searchWord } = useAppSelector(({ search }) => search);
 
@@ -21,6 +22,7 @@ const SearchBarUI = ({
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
         placeholder="질환명을 입력해주세요."
       />
       <StyledBorder>

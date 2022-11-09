@@ -11,19 +11,17 @@ export const getSick = async (param: string): Promise<ISicks[]> => {
     };
 
     const queryStr = new URLSearchParams(payload).toString();
-
     const cacheStorage = await caches.open(URL_SICK);
-    // sick?sickNm_like=콜레라
     const cachedResponse = await cacheStorage.match(queryStr);
 
-    // If no cache exists
     if (!cachedResponse || !cachedResponse.ok) {
       const config = {
         params: payload,
       };
       const { data } = await instance.get(`/${URL_SICK}`, config);
-      cacheStorage.put(queryStr, new Response(JSON.stringify(data.slice(0, 7))));
-      return data;
+      const resultData = data.slice(0, 7);
+      cacheStorage.put(queryStr, new Response(JSON.stringify(resultData)));
+      return resultData;
     }
 
     const cached = await cachedResponse?.json();

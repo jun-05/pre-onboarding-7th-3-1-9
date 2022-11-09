@@ -5,6 +5,7 @@ export type SliceState = {
   isLoading: boolean;
   isOpen: boolean;
   items: ISicks[];
+  selectIndex: number;
 };
 
 export interface ISicks {
@@ -17,6 +18,7 @@ const initialState: SliceState = {
   isLoading: false,
   isOpen: false,
   items: [],
+  selectIndex: -1,
 };
 
 export const SearchSlice = createSlice({
@@ -35,9 +37,13 @@ export const SearchSlice = createSlice({
     setIsOpen: (state, action) => {
       state.isOpen = action.payload;
     },
+    setSelectIndex: (state, action) => {
+      state.selectIndex = action.payload;
+    },
   },
 });
 
-export const { setItems, setSearchWord, setIsLoading, setIsOpen } = SearchSlice.actions;
+export const { setItems, setSearchWord, setIsLoading, setIsOpen, setSelectIndex } =
+  SearchSlice.actions;
 
 export default SearchSlice.reducer;
