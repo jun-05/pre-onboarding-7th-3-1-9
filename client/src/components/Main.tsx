@@ -1,16 +1,27 @@
 import * as S from '../styles/MainStyle';
 import SearchRec from './SearchRec';
+import InputStyle from 'styles/InputStyle';
+import { setSearchWords, setOnFocus } from 'redux/reducer/searchSlice';
+import { useAppSelector, useAppDispatch } from 'redux/reducer/hooks';
 
 function Main() {
+  const dispatch = useAppDispatch();
+  const { searchWords } = useAppSelector(state => state.searchData);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchWords(e.currentTarget.value));
+    console.log(searchWords);
+  };
+
+  const onFocusInput = () => {
+    dispatch(setOnFocus(true));
+  };
+  const onBlur = () => {
+    dispatch(setOnFocus(false));
+  };
   return (
     <S.MainLayout>
-      <S.MainTitle>
-        국내 모든 임상시험 검색하고 <br /> 온라인으로 참여하기
-      </S.MainTitle>
-      <S.MainSearchInputBox>
-        <S.MainSearchInput placeholder="질환명을 입력해 주세요." />
-        <S.SearchIcon />
-      </S.MainSearchInputBox>
+      <InputStyle onChange={onChange} onFocus={onFocusInput} onBlur={onBlur} />
       <SearchRec />
     </S.MainLayout>
   );

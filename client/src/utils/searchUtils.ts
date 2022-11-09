@@ -1,15 +1,15 @@
-export interface SearchType {
-  empty: string;
-  filled: string;
-  searchData: [];
-}
+import { sickData } from 'redux/reducer/searchSlice';
 
-// data[]
-export interface Indexable extends SearchType {
-  [key: string]: string | [];
+export interface Indexable extends sickData {
+  [key: string]: string | any[];
+  searchData: sickData[];
 }
 // 변수 : 타입 형태로
-export const SearchReData = ({ empty, filled, searchData }: SearchType) => {
-  const searchRec = searchData ? filled : empty;
-  return searchRec;
+
+export const sickNmMap = ({ searchData }: Indexable) => {
+  searchData?.map(el => {
+    return {
+      sickNm: el?.sickNm,
+    } as Indexable;
+  });
 };

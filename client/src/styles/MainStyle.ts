@@ -40,7 +40,7 @@ export const SearchIcon = styled(BiSearch)`
   cursor: pointer;
 `;
 
-export const MainSearchInput = styled.input`
+export const MainSearchInputStyle = styled.input`
   width: 90%;
   height: 60px;
   border: none;

@@ -1,7 +1,8 @@
-import React from 'react';
 import Main from 'components/Main';
+import useAddSearch from 'hooks/useAddSearch';
 
 function MainPage() {
+  useAddSearch();
   return (
     <div>
       <Main />

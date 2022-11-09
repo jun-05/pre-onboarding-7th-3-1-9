@@ -1,31 +1,41 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface testTypeData {
-  [key: string]: number | string;
-}
-
 export interface testType {
-  testList: testTypeData[];
-  testDetail: testTypeData[];
+  searchData: sickData[];
+  searchWords: string;
+  loading: boolean;
+  onfocus: boolean;
+}
+export interface sickData {
+  sickCd: string;
+  sickNm: string;
 }
 const initialState = {
-  testList: [],
-  testDetail: {},
+  searchData: [],
+  searchWords: '',
+  loading: false,
+  isOnFocus: false,
 };
 
 export const searchSlice = createSlice({
   name: 'searchList',
   initialState,
   reducers: {
-    setTestList: (state, action) => {
-      state.testList = action.payload;
+    setSearchData: (state, action) => {
+      state.searchData = action.payload;
     },
-    setTestDetail: (state, action) => {
-      state.testDetail = action.payload;
+    setSearchWords: (state, action) => {
+      state.searchWords = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    setOnFocus: (state, action) => {
+      state.isOnFocus = action.payload;
     },
   },
 });
 
-export const { setTestList, setTestDetail } = searchSlice.actions;
+export const { setSearchData, setSearchWords, setLoading, setOnFocus } = searchSlice.actions;
 
 export default searchSlice.reducer;
