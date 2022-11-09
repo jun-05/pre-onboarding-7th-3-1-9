@@ -19,7 +19,7 @@ then
 elif [[ $MESSAGE == "refactor"* ]];
 then
   echo "⚒ $MESSAGE" >$FILE
-elif [[ $MESSAGE == "style"* ]];
+elif [[ $MESSAGE == "ui"* ]];
 then
   echo "🎨 $MESSAGE" >$FILE
 elif [[ $MESSAGE == "docs"* ]];
@@ -28,6 +28,9 @@ then
 elif [[ $MESSAGE == "ci"* ]];
 then
   echo "💡 $MESSAGE" >$FILE
+elif [[ $MESSAGE == "style"* ]];
+then
+  echo "📝 $MESSAGE" >$FILE
 else
   echo "$MESSAGE" >$FILE
 fi
