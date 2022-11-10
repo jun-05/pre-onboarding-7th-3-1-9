@@ -9,6 +9,7 @@ const checkExpiration = () => {
   const prevAcces = localStorage.getItem('accessTime');
   if (prevAcces) {
     nowTime - parseInt(prevAcces) > CACHE_EXPIRATION && clearCacheData();
+    localStorage.setItem('accessTime', nowTime.toString());
     return;
   }
   localStorage.setItem('accessTime', nowTime.toString());
