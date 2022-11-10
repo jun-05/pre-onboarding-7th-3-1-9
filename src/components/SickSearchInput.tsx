@@ -36,9 +36,21 @@ const Container = styled.div`
 const Input = styled.input`
   border-radius: 42px;
   width: 100%;
-  padding: 20px 10px 20px 42px;
+  padding: 20px 42px 20px 42px;
   font-size: 1.6rem;
   background-color: #fff;
+  box-shadow: 1px 1px 4px 0px #a7afb7ba;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 1px 1.5px #007be9;
+  }
+
+  &::-webkit-search-cancel-button {
+    position: relative;
+    right: -20px;
+    cursor: pointer;
+  }
 
   &::placeholder {
     color: #a7afb7;

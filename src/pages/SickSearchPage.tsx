@@ -131,6 +131,7 @@ const SickSearchList = styled.ul`
   background-color: #fff;
   padding: 20px 10px;
   box-sizing: border-box;
+  box-shadow: 1px 1px 4px 0px #a7afb7ba;
 `;
 
 const suggestSearchKeyword = css`
