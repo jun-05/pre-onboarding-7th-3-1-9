@@ -7,7 +7,7 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   config => {
-    console.info('API 호출 횟수');
+    console.info('calling api');
     return config;
   },
   error => {
