@@ -62,6 +62,8 @@ export function SickSearchPage() {
         { useCache: true }
       );
 
+      setSelectIndex(-1);
+
       if (sickList == null) {
         return;
       }
