@@ -1,54 +1,26 @@
-import { ReactComponent as Magnifying } from 'assets/Magnifying.svg';
+import AutoCompleteItem from 'components/blocks/AutoCompleteItem';
+import EmptyResult from 'components/blocks/EmptyResult';
+// import LoadingText from 'components/blocks/LoadingText';
+import Recommand from 'components/blocks/Recommand';
 import useGetSickItem from 'hooks/useGetSickItem';
-import { useAppSelector } from '../../../redux/hooks';
-import { DropDownItem } from './styles';
+import { useAppSelector } from 'redux/hooks';
 
 const AutoComplete = () => {
   const data = useGetSickItem();
-
-  const { searchWord, isLoading, selectIndex } = useAppSelector(({ search }) => search);
-
+  const { searchWord, selectIndex } = useAppSelector(({ search }) => search);
+  
+  // if(isLoading) return <LoadingText />
   return (
     <>
-      {searchWord !== '' && (
-        <>
-          <DropDownItem>
-            <span className="search_icon">
-              <Magnifying />
-            </span>
-            <span className="search_text">
-              <span className="font_bold">{searchWord}</span>
-            </span>
-          </DropDownItem>
-          <p>추천 검색어</p>
-        </>
-      )}
-      {isLoading && (
-        <DropDownItem>
-          <span className="search_text">로딩중...</span>
-        </DropDownItem>
-      )}
+      {searchWord !== '' && <Recommand searchWord={searchWord} />}
+      {/* {isLoading && <LoadingText />} */}
       {data.map(({ sickNm }, index) => {
         const textArray = sickNm.split(searchWord);
         return (
-          <DropDownItem key={index} className={selectIndex === index ? 'over' : ''}>
-            <span className="search_icon">
-              <Magnifying />
-            </span>
-            {textArray.map((item, i) => (
-              <span key={i} className="search_text">
-                {item}
-                {i !== textArray.length - 1 && <span className="font_bold">{searchWord}</span>}
-              </span>
-            ))}
-          </DropDownItem>
+          <AutoCompleteItem key={index} index={index} searchWord={searchWord} selectIndex={selectIndex} textArray={textArray} />
         );
       })}
-      {data.length === 0 && (
-        <DropDownItem>
-          <span className="search_text">검색어가 없습니다</span>
-        </DropDownItem>
-      )}
+      {data.length === 0 && <EmptyResult />}
     </>
   );
 };

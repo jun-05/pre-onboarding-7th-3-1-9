@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactComponent as Magnifying } from 'assets/Magnifying.svg';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppSelector } from 'redux/hooks';
 import { StyledBorder, StyledInput, StyledSearchSection } from './styles';
 
 const SearchBar = ({

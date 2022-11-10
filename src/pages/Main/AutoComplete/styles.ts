@@ -24,6 +24,8 @@ export const DropDownBox = styled.ul`
     font-size: 12px;
     line-height: 12px;
     color: #6c737b;
+
+    margin: 5px 0;
   }
 `;
 

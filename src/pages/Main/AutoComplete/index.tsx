@@ -4,7 +4,7 @@ import AutoComplete from './AutoComplete';
 import { DropDownBox } from './styles';
 
 const AutoCompleteIndex = () => {
-  const { isOpen } = useAppSelector(({ search }) => search);
+  const isOpen = useAppSelector(({ search }) => search.isOpen);
 
   return (
     <DropDownBox className={isOpen ? 'active' : ''}>
