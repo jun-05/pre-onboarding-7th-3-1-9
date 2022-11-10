@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface testType {
+export type SliceType = {
   searchData: sickData[];
   searchWords: string;
   loading: boolean;
-  onfocus: boolean;
-}
+  isOnFocus: boolean;
+};
 export interface sickData {
   sickCd: string;
   sickNm: string;
 }
-const initialState = {
+const initialState: SliceType = {
   searchData: [],
   searchWords: '',
   loading: false,

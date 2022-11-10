@@ -13,9 +13,9 @@ export const GlobalStyles = createGlobalStyle`
   }
   html, body, div#root {
     height: auto;
+    
   }
   body {
- 
 
   }
 `;

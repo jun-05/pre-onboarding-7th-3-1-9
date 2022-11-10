@@ -7,7 +7,6 @@ import { useAppSelector, useAppDispatch } from 'redux/reducer/hooks';
 function Main() {
   const dispatch = useAppDispatch();
   const { searchWords } = useAppSelector(state => state.searchData);
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchWords(e.currentTarget.value));
     console.log(searchWords);
