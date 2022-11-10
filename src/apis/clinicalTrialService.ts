@@ -2,9 +2,9 @@ import instance from './axiosInstance';
 import { GET_SICK_URL } from '../utils/constant/url';
 
 interface InfoSicks {
-    sickCd: string;
-    sickNm: string;
-  }
+  sickCd: string;
+  sickNm: string;
+}
 
 export const getSickData = async (param: string): Promise<InfoSicks[]> => {
   if (param === '') return [];

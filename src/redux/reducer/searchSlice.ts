@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Define a type for the slice state
 interface SerachState {
-  sickData: []; 
+  sickData: [];
   searchWord: string;
   isLoading: boolean;
   isAutocomplete: boolean;
 }
 
 export interface sickData {
-    sickCd: string;
-    sickNm: string;
-  }
+  sickCd: string;
+  sickNm: string;
+}
 
 // Define the initial state using that type
 const initialState: SerachState = {

@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg';
-import { useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from '../../redux/hooks';
 
 type AutoCompleteItemProps = {
-    text: string
-}
+  text: string;
+};
 
-function AutoCompleteItem({text} : AutoCompleteItemProps)  {
-  const {searchWord} = useAppSelector(state => state.search);
+function AutoCompleteItem({ text }: AutoCompleteItemProps) {
+  const { searchWord } = useAppSelector(state => state.search);
   return (
     <>
       <Wrapper>
@@ -15,15 +15,14 @@ function AutoCompleteItem({text} : AutoCompleteItemProps)  {
         <SearchResultWord>{text}</SearchResultWord>
       </Wrapper>
     </>
-    
-  )
+  );
 }
 
 const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-`
+`;
 const StyledSearchIcon = styled(SearchIcon)`
   width: 15px;
   position: absolute;
@@ -33,6 +32,6 @@ const StyledSearchIcon = styled(SearchIcon)`
 
 const SearchResultWord = styled.h3`
   margin-left: 30px;
-`
+`;
 
-export default AutoCompleteItem
+export default AutoCompleteItem;

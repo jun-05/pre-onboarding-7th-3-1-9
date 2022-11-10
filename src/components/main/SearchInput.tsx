@@ -14,11 +14,15 @@ function SearchInput() {
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchWord(e.target.value));
-  }
+  };
   return (
     <Wrapper>
       <StyledSearchIcon />
-      <SearchInputField ref={searchInput} placeholder="질환명을 입력해주세요." onChange={onChangeHandler}/>
+      <SearchInputField
+        ref={searchInput}
+        placeholder="질환명을 입력해주세요."
+        onChange={onChangeHandler}
+      />
       <StyledButton text={'검색'} />
       {isAutocomplete && <AutoCompleteBox />}
     </Wrapper>

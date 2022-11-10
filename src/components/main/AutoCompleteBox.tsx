@@ -4,17 +4,17 @@ import { useAppSelector } from '../../redux/hooks';
 import AutoCompleteItem from './AutoCompleteItem';
 
 function AutoCompleteBox() {
-  const {sickData} = useAppSelector(state => state.search);
+  const { sickData } = useAppSelector(state => state.search);
   return (
     <Wrapper>
       <Label>추천검색어</Label>
       <SearchWordsWrapper>
-        {sickData.map(({sickNm}, idx)=> {
-          return (<>
-            <AutoCompleteItem 
-            key={idx} 
-            text={sickNm}/>
-          </>)
+        {sickData.map(({ sickNm }, idx) => {
+          return (
+            <>
+              <AutoCompleteItem key={idx} text={sickNm} />
+            </>
+          );
         })}
       </SearchWordsWrapper>
     </Wrapper>
@@ -48,6 +48,6 @@ const SearchWordsWrapper = styled.div`
   row-gap: 20px;
   height: 100%;
   min-height: 50px;
-`
+`;
 
 export default AutoCompleteBox;
