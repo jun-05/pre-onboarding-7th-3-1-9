@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { SickSearchButtonIcon } from './SickSearchButtonIcon';
+import { SickSearchButtonIcon } from './Icon/SickSearchButtonIcon';
 
 export function SearchButton() {
   return (

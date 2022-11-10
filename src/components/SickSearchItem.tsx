@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
-
 import { css } from '@emotion/react';
 import { SickItem } from '../model/SickItem';
 import { ParseBoldString } from '../utils/ParseBoldString';
-import { SearchIcon } from './SearchIcon';
+import { SearchIcon } from './Icon/SearchIcon';
 
 export function SickSearchItem({
   result,

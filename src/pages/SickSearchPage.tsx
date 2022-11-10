@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Fragment, KeyboardEvent, MouseEventHandler, useEffect, useState } from 'react';
+import { KeyboardEvent, MouseEventHandler, useEffect, useState } from 'react';
 import { fetchSickSearchList } from '../apis/fetchSickSearchList';
 import { MainLayout } from '../components/MainLayout';
 import { SickSearchInput } from '../components/SickSearchInput';
@@ -105,15 +105,13 @@ export function SickSearchPage() {
           <li css={suggestSearchKeyword}>추천 검색어</li>
 
           {sickSearchList.map((reslut, index) => (
-            <Fragment key={reslut.sickCd}>
-              <SickSearchItem
-                result={reslut}
-                searchKeyword={searchKeyword}
-                selectIndex={selectIndex}
-                index={index}
-                // onMouseOver={onMouseOver}
-              />
-            </Fragment>
+            <SickSearchItem
+              key={reslut.sickCd}
+              result={reslut}
+              searchKeyword={searchKeyword}
+              selectIndex={selectIndex}
+              index={index}
+            />
           ))}
         </SickSearchList>
       )}

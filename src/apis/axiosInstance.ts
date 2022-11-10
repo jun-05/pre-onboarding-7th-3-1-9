@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 type AxiosRequestHeaders = AxiosRequestConfig<any>['headers'];
 
 const instance = axios.create({
-  baseURL: 'http://localhost:4000',
+  baseURL: 'https://json-server-beryl.vercel.app/api',
   timeout: 30_000,
 });
 
