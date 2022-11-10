@@ -9,8 +9,8 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <ThemeProvider theme={Theme}>
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ThemeProvider>
 );
