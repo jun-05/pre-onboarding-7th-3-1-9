@@ -19,7 +19,6 @@ const SearchContainer = () => {
     if (e.nativeEvent.isComposing) {
       return;
     }
-    console.log('캡처링');
     const typing = e.code;
     upDownValHandle(typing, sickData);
   };
