@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { SearchPage } from './page/SearchPage';
-import GlobalBackground from './component/common/Layout';
+import Layout from './component/common/Layout';
 
 function App() {
   return (
     <Routes>
-      <Route element={<GlobalBackground />}>
+      <Route element={<Layout />}>
         <Route path="/" element={<SearchPage />} />
       </Route>
     </Routes>

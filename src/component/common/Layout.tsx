@@ -2,20 +2,19 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
 
-const GlobalBackground = () => {
+const Layout = () => {
   return (
-    <GlobalBackgroundBlock>
+    <LayoutBlock>
       <Outlet />
-    </GlobalBackgroundBlock>
+    </LayoutBlock>
   );
 };
-const GlobalBackgroundBlock = tw.div<any>`
+const LayoutBlock = tw.div<any>`
 flex 
 justify-center
 w-screen
 min-h-screen
 h-fit
-bg-blue-white
 `;
 
-export default GlobalBackground;
+export default Layout;
