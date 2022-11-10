@@ -13,6 +13,9 @@ export class HttpClient implements HttpClientInterface {
   }
 
   get = async (endPoint: string, options?: AxiosRequestConfig<any>) => {
+    console.log("httpURL")
+    console.log(this.#baseURL+endPoint)
+    console.log(this.#baseURL+endPoint+options?.params)
     return await axiosInstance.get(this.#baseURL + endPoint, { ...options });
   };
 }
