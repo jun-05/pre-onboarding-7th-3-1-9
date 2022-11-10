@@ -1,33 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import SearchForm from './SearchForm';
 import SearchList from './SearchList';
 import { clearCacheData } from '../../utils/cache';
-import { sick } from '../../models/type';
-import { useSearchEventContext } from '../../context/SearchEventContext';
+import { useSelectVal } from '../../hooks/useSelectVal';
+import { useSearchContext } from '../../context/SearchContext';
+import NoResult from './NoResult';
 
-type SearchContainerProps = {
-  sickData: sick[];
-};
+const SearchContainer = () => {
+  const { sickData, inputValue } = useSearchContext();
+  const { selected, handleSelected, initValue, upDownValHandle } = useSelectVal();
 
-const SearchContainer = ({ sickData }: SearchContainerProps) => {
-  const { upSelectNumber, downSelectNumber } = useSearchEventContext();
+  useEffect(() => {
+    initValue();
+  }, [initValue, inputValue]);
 
-  const onKeyEventHanler = (e: React.KeyboardEvent<HTMLImageElement>) => {
-    const typing = e.code;
-    if (typing === 'ArrowDown') {
-      upSelectNumber();
-    } else if (typing === 'ArrowUp') {
-      downSelectNumber();
+  const onKeyEventHanler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.nativeEvent.isComposing) {
+      return;
     }
+    console.log('캡처링');
+    const typing = e.code;
+    upDownValHandle(typing, sickData);
   };
 
   return (
-    <SearchContainerBlock onKeyDown={onKeyEventHanler}>
+    <SearchContainerBlock onKeyDownCapture={onKeyEventHanler}>
       <SearchTitleBlock>국내 모든 임상시험 검색하고 온라인으로 참여하기</SearchTitleBlock>
       <SearchContentsBlock>
-        <SearchForm />
-        {sickData.length ? <SearchList sickData={sickData} /> : ''}
+        <SearchForm selected={selected} />
+        {sickData.length ? (
+          <SearchList sickData={sickData} handleSelected={handleSelected} selectedMemo={selected} />
+        ) : (
+          inputValue && <NoResult />
+        )}
       </SearchContentsBlock>
       <button onClick={() => clearCacheData()}>캐쉬 초기화</button>
     </SearchContainerBlock>

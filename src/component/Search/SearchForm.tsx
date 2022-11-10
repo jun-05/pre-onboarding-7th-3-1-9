@@ -2,8 +2,9 @@ import React from 'react';
 import tw from 'tailwind-styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useSearchContext } from './../../context/SearchContext';
+import { isBlankVal } from './../../utils/validation';
 
-const SearchForm = () => {
+const SearchForm = ({ selected }: { selected: string }) => {
   const { setSearchInput } = useSearchContext();
   return (
     <SearchFormBlock>
@@ -11,7 +12,17 @@ const SearchForm = () => {
         <AiOutlineSearch />
       </SearchIconBlock>
       <SearchInputBlock placeholder="질환명을 입력해주세요" type="text" onChange={setSearchInput} />
-      <SearchFormButton>검색</SearchFormButton>
+      <SearchFormButton
+        onClick={e => {
+          e.preventDefault();
+          if (isBlankVal(selected)) {
+            return;
+          }
+          alert(selected + '검색');
+        }}
+      >
+        검색
+      </SearchFormButton>
     </SearchFormBlock>
   );
 };

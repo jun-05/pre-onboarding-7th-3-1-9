@@ -7,14 +7,14 @@ import { parseTextBold } from '../../utils/text';
 type SearchResultProps = {
   sickName: string;
   selected?: boolean;
-  handleSelected: (value: string) => void;
+  onClickList: () => void;
 };
 
-const SearchResult = ({ sickName, selected = false, handleSelected }: SearchResultProps) => {
+const SearchResult = ({ sickName, selected = false, onClickList }: SearchResultProps) => {
   const { inputValue } = useSearchContext();
 
   return (
-    <SearchResultBlock $selected={selected} onClick={handleSelected}>
+    <SearchResultBlock $selected={selected} onClick={onClickList}>
       <AiOutlineSearch />
       <div dangerouslySetInnerHTML={{ __html: parseTextBold(sickName, inputValue) }}></div>
     </SearchResultBlock>
