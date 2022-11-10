@@ -15,12 +15,14 @@ export interface IAutoSearchData {
   index: number
   name: string;
   setKeyword: Dispatch<SetStateAction<string>>;
+  keyword:string
 }
 
 export interface IProps {
   keyItems: IAutoDatas[];
   selectIndex: number;
   setKeyword: Dispatch<SetStateAction<string>>;
+  keyword:string;
 }
 
 

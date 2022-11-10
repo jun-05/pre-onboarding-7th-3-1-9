@@ -55,7 +55,7 @@ const App = () => {
         <Title topContent={'국내 모든 임상시험 검색하고'} bottomContent={'온라인으로 참여하기'} />
         <SearchBar keyword={keyword} onChangeData={onChangeData} onKeyUp={onKeyUp} />
         {keyItems.length > 0 && keyword && (
-            <AutoSearchDataContainer keyItems={keyItems} selectIndex={selectIndex} setKeyword={setKeyword} />
+            <AutoSearchDataContainer keyItems={keyItems} selectIndex={selectIndex} setKeyword={setKeyword} keyword={keyword}/>
         )}
       </SearchContainer>
     </Layout>

@@ -4,7 +4,6 @@ export const AutoSearchDataLi = styled.li`
   display:flex;
   padding: 10px;
   font-size: 14px;
-  font-weight: bold;
   z-index: 4;
   letter-spacing: 2px;
   &:hover {
@@ -15,4 +14,7 @@ export const AutoSearchDataLi = styled.li`
     background-color:#d2d2d2;
   }
   position: relative;
+  .font_bold{
+    font-weight: bold;
+  }
 `;
