@@ -37,6 +37,15 @@ const style = css`
     border: 0;
   }
 
+  button {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    appearance: none;
+  }
+
   :root {
     font-size: 10px;
   }
