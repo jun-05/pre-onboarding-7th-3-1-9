@@ -38,10 +38,10 @@ const Container = styled.div`
 const Input = styled.input`
   border-radius: 42px;
   width: 100%;
-  padding: 20px 48px 20px 42px;
+  padding: 20px 48px 20px 50px;
   font-size: 1.6rem;
+  line-height: 1.6;
   background-color: #fff;
-  box-shadow: 1px 1px 4px 0px #a7afb7ba;
   background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-256.png);
   background-position: 20px center;
   background-size: 22px;
