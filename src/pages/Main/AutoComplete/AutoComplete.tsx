@@ -1,42 +1,56 @@
-import React from 'react';
-import styled from 'styled-components';
+import { ReactComponent as Magnifying } from 'assets/Magnifying.svg';
+import useGetSickItem from 'hooks/useGetSickItem';
 import { useAppSelector } from '../../../redux/hooks';
-import AutoCompleteItem from './AutoCompleteItem';
+import { DropDownItem } from './styles';
 
-const AutoCompleteUI = () => {
-  const { isOpen } = useAppSelector(({ search }) => search);
+const AutoComplete = () => {
+  const data = useGetSickItem();
+
+  const { searchWord, isLoading, selectIndex } = useAppSelector(({ search }) => search);
+
   return (
-    <DropDownBox className={isOpen ? 'active' : ''}>
-      <AutoCompleteItem />
-    </DropDownBox>
+    <>
+      {searchWord !== '' && (
+        <>
+          <DropDownItem>
+            <span className="search_icon">
+              <Magnifying />
+            </span>
+            <span className="search_text">
+              <span className="font_bold">{searchWord}</span>
+            </span>
+          </DropDownItem>
+          <p>추천 검색어</p>
+        </>
+      )}
+      {isLoading && (
+        <DropDownItem>
+          <span className="search_text">로딩중...</span>
+        </DropDownItem>
+      )}
+      {data.map(({ sickNm }, index) => {
+        const textArray = sickNm.split(searchWord);
+        return (
+          <DropDownItem key={index} className={selectIndex === index ? 'over' : ''}>
+            <span className="search_icon">
+              <Magnifying />
+            </span>
+            {textArray.map((item, i) => (
+              <span key={i} className="search_text">
+                {item}
+                {i !== textArray.length - 1 && <span className="font_bold">{searchWord}</span>}
+              </span>
+            ))}
+          </DropDownItem>
+        );
+      })}
+      {data.length === 0 && (
+        <DropDownItem>
+          <span className="search_text">검색어가 없습니다</span>
+        </DropDownItem>
+      )}
+    </>
   );
 };
 
-const DropDownBox = styled.ul`
-  &.active {
-    display: flex;
-  }
-  display: none;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  flex-direction: column;
-  width: 100%;
-  top: 100%;
-  left: 0px;
-  margin-top: 8px;
-  padding: 20px 0;
-  box-shadow: rgba(30, 32, 37, 0.1) 0px 2px 10px;
-  position: absolute;
-
-  p {
-    padding-left: 16px;
-    font-size: 12px;
-    line-height: 12px;
-    color: #6c737b;
-  }
-`;
-
-export default AutoCompleteUI;
+export default AutoComplete;

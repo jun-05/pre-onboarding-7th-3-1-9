@@ -1,12 +1,16 @@
 import React from 'react';
-import AutoCompleteUI from './AutoComplete';
+import { useAppSelector } from 'redux/hooks';
+import AutoComplete from './AutoComplete';
+import { DropDownBox } from './styles';
 
-const AutoComplete = () => {
+const AutoCompleteIndex = () => {
+  const { isOpen } = useAppSelector(({ search }) => search);
+
   return (
-    <>
-      <AutoCompleteUI />
-    </>
+    <DropDownBox className={isOpen ? 'active' : ''}>
+      <AutoComplete />
+    </DropDownBox>
   );
 };
 
-export default AutoComplete;
+export default AutoCompleteIndex;

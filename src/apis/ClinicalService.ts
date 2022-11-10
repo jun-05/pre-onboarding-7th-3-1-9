@@ -1,5 +1,5 @@
-import { ISicks } from 'redux/reducer/searchSlice';
 import instance from './axiosInstance';
+import { ISicks } from '@types';
 
 const URL_SICK = 'sick';
 

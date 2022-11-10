@@ -1,23 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-export type SliceState = {
-  searchWord: string;
-  isLoading: boolean;
-  isOpen: boolean;
-  items: ISicks[];
-  selectIndex: number;
-};
-
-export interface ISicks {
-  sickCd: string;
-  sickNm: string;
-}
+import { SliceState } from '@types';
 
 const initialState: SliceState = {
   searchWord: '',
   isLoading: false,
   isOpen: false,
-  items: [],
+  itemsLength: 0,
   selectIndex: -1,
 };
 
@@ -25,8 +13,8 @@ export const SearchSlice = createSlice({
   name: 'searchItem',
   initialState,
   reducers: {
-    setItems: (state, action) => {
-      state.items = action.payload;
+    setItemsLength: (state, action) => {
+      state.itemsLength = action.payload;
     },
     setSearchWord: (state, action) => {
       state.searchWord = action.payload;
@@ -43,7 +31,7 @@ export const SearchSlice = createSlice({
   },
 });
 
-export const { setItems, setSearchWord, setIsLoading, setIsOpen, setSelectIndex } =
+export const { setItemsLength, setSearchWord, setIsLoading, setIsOpen, setSelectIndex } =
   SearchSlice.actions;
 
 export default SearchSlice.reducer;
