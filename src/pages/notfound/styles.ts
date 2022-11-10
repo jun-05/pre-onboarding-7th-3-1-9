@@ -11,9 +11,14 @@ export const NotFoundDiv = styled.div`
   background-color: #cae9ff;
 
   .fof h1 {
+    display: block;
     font-size: 50px;
-    display: inline-block;
     padding-right: 12px;
+  }
+
+  .fof h1.animate {
+    display: inline-block;
+    margin-top: 1.5rem;
     animation: type 0.5s alternate infinite;
   }
 

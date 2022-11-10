@@ -1,9 +1,9 @@
-import { Button } from 'components/common/Button';
 import React from 'react';
+import { Button } from 'components/common/Button';
 import { useNavigate } from 'react-router-dom';
 import { NotFoundDiv } from './styles';
 
-const NotFound: React.FC = () => {
+const NotFound = () => {
   const navigate = useNavigate();
   const navigateHome = () => {
     navigate('/');
@@ -12,7 +12,8 @@ const NotFound: React.FC = () => {
   return (
     <NotFoundDiv>
       <div className="fof">
-        <h1>Error 404 PAGE NOT FOUND</h1>
+        <h1>ERROR 404</h1>
+        <h1 className="animate">페이지를 찾을수 없습니다.</h1>
       </div>
       <div>
         <Button type="button" text="메인 화면으로 >" onClick={navigateHome} />

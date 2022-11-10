@@ -1,7 +1,7 @@
-import NotFound from 'pages/notfound/NotFound';
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes, To } from 'react-router-dom';
-import MainPage from '../pages/Main';
+import MainPage from 'pages/Main';
+import NotFound from 'pages/NotFound';
 
 const Router = () => {
   return (
