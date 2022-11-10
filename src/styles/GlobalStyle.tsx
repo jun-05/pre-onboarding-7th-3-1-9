@@ -9,6 +9,8 @@ const style = css`
   body {
     padding: 0;
     margin: 0;
+    font-family: 'Spoqa Han Sans Neo', -apple-system, 'BlinkMacSystemFont', 'Apple SD Gothic Neo',
+      'Inter', 'Segoe UI', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   }
 
   h1,
@@ -35,6 +37,15 @@ const style = css`
   input {
     appearance: none;
     border: 0;
+  }
+
+  button {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    appearance: none;
   }
 
   :root {

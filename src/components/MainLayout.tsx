@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { MouseEventHandler, ReactNode } from 'react';
+import { Title } from './Title';
 
 export function MainLayout({
   onClick,
@@ -10,11 +11,7 @@ export function MainLayout({
 }) {
   return (
     <Section onClick={onClick}>
-      <h1>
-        국내 모든 임상시험 검색하고
-        <br />
-        온라인으로 참여하기
-      </h1>
+      <Title content={`국내 모든 임상시험 검색하고\n온라인으로 참여하기`} />
       {children}
     </Section>
   );

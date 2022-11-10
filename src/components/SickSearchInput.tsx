@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler } from 'react';
-import { SearchIcon } from './SearchIcon';
+import { SearchButton } from './SearchButton';
 
 export function SickSearchInput({
   onChange,
@@ -14,7 +14,6 @@ export function SickSearchInput({
   return (
     <>
       <Container>
-        <SearchIcon />
         <Input
           type="search"
           placeholder="질환명을 입력해주세요"
@@ -22,6 +21,8 @@ export function SickSearchInput({
           onClick={onClick}
           onKeyUp={onKeyUp}
         />
+
+        <SearchButton />
       </Container>
     </>
   );
@@ -31,19 +32,29 @@ const Container = styled.div`
   max-width: 490px;
   width: 100%;
   position: relative;
+  display: flex;
 `;
 
 const Input = styled.input`
   border-radius: 42px;
   width: 100%;
-  padding: 20px 42px 20px 42px;
+  padding: 20px 48px 20px 50px;
   font-size: 1.6rem;
+  line-height: 1.6;
   background-color: #fff;
-  box-shadow: 1px 1px 4px 0px #a7afb7ba;
+  background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-256.png);
+  background-position: 20px center;
+  background-size: 22px;
+  background-repeat: no-repeat;
+
+  &:focus {
+    padding: 20px 48px 20px 20px;
+    background-image: none;
+  }
 
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 1px 1.5px #007be9;
+    box-shadow: 0px 0px 1px 2px #007be9;
   }
 
   &::-webkit-search-cancel-button {
