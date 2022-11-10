@@ -1,9 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/elements/Header';
 import SearchInput from '../components/main/SearchInput';
+import useDebounceSickData from '../hooks/useDebounceSickData';
 
 const Main = () => {
+  useDebounceSickData();
   return (
     <Wrapper>
       <Header />

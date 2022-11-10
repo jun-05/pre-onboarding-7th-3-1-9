@@ -5,6 +5,7 @@ import { setIsAutocomplete } from '../redux/reducer/searchSlice';
 function useFocusAutocomplete() {
   const searchInput = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
+  
   useEffect(() => {
     const listener = (event: MouseEvent) => {
       const target = event.target as HTMLInputElement;

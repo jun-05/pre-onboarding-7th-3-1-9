@@ -2,20 +2,25 @@ import React from 'react';
 import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg';
 import styled from 'styled-components';
 import { Button } from '../elements/Button';
-import AutoComplete from './AutoComplete';
-import { useAppSelector } from '../../redux/hooks';
+import AutoCompleteBox from './AutoCompleteBox';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import useFocusAutocomplete from '../../hooks/useFocusAutocomplete';
+import { setSearchWord } from '../../redux/reducer/searchSlice';
 
 function SearchInput() {
-  const searchInput = useFocusAutocomplete();
+  const dispatch = useAppDispatch();
   const { isAutocomplete } = useAppSelector(state => state.search);
+  const searchInput = useFocusAutocomplete();
 
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchWord(e.target.value));
+  }
   return (
     <Wrapper>
       <StyledSearchIcon />
-      <SearchInputField ref={searchInput} placeholder="질환명을 입력해주세요." />
+      <SearchInputField ref={searchInput} placeholder="질환명을 입력해주세요." onChange={onChangeHandler}/>
       <StyledButton text={'검색'} />
-      {isAutocomplete && <AutoComplete />}
+      {isAutocomplete && <AutoCompleteBox />}
     </Wrapper>
   );
 }
