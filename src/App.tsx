@@ -1,18 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import SearchIcon from './assets/SearchIcon'
 import Title from './components/Title'
-// import SearchBar from './components/SearchBar'
-// import { searchDesease } from './api/desease';
+import SearchBar from './components/SearchBar';
+import { getSick } from './api/cache';
 
 interface autoDatas {
   sickCd: string;
   sickNm: string;
-}
-interface IDESEASE {
-  includes(data: string): boolean;
-  sickNm?: any;
 }
 
 function App() {
@@ -25,37 +20,23 @@ function App() {
 
 
   useEffect(() => {
-    const updateData = async () => {
-      const res = await fetchData();
-      let b = res.filter((list: IDESEASE) => list.sickNm.includes(keyword) === true)
-        .slice(0, 10);
-      setKeyItems(b);
-    }
+
     const debounce = setTimeout(() => {
-      if (keyword) updateData();
+      if (keyword){
+        const data = getSick(keyword)
+        data.then((res)=>setKeyItems(res))
+      }
     }, 200)
     return () => {
       clearTimeout(debounce)
     }
   }, [keyword])
-  const fetchData = async () => {
-    const {data} = await axios.get('http://localhost:4000/sick')
-    return data
-  }
+
   return (
     <Layout>
       <SearchContainer>
         <Title topContent={'국내 모든 임상시험 검색하고'}  bottomContent={'온라인으로 참여하기'}/>
-        <InputWrapper>
-          <IconWrapper>
-            <SearchIcon />
-          </IconWrapper>
-          <Search value={keyword} onChange={onChangeData} />
-          <BlueBox>검색</BlueBox>
-        </InputWrapper>
-        {/* <>
-        <SearchBar ={keyword} onChangeData={onChangeData} />
-        </> */}
+        <SearchBar keyword={keyword} onChangeData={onChangeData}/>
         {keyItems.length > 0 && keyword && (
           <AutoSearchContainer>
             <AutoSearchWrap ref={autoRef}>
@@ -88,25 +69,7 @@ const Layout = styled.div`
   background-color: #D0E8FD;
   height:100vh;
 `
-const InputWrapper = styled.section`
-  display:flex;
-  background-color:#ffffff;
-  border-radius: 1rem;
-  align-items:center;
-`
 
-const IconWrapper = styled.section`
-    padding:0.7rem;
-    border-radius: 1rem 0 0 1rem;
-`
-const BlueBox = styled.div`
-  color: #ffffff;
-  background-color:#367AE1;
-  padding:0.7rem;
-  border-radius: 0 1rem 1rem 0rem;
-  min-width:3rem;
-  border:1px solid #367AE1;
-`
 
 const SearchContainer = styled.div`
   width: 400px;
@@ -115,13 +78,6 @@ const SearchContainer = styled.div`
   border: 0;
 `;
 
-const Search = styled.input`
-  border: 0;
-  padding-left: 10px;
-  width: 100%;
-  height: 100%;
-  outline: none;
-`;
 
 const AutoSearchContainer = styled.div`
   z-index: 3;
