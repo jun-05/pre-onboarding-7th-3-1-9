@@ -2,14 +2,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Fragment, KeyboardEvent, MouseEventHandler, useEffect, useState } from 'react';
-import { fetchSickSearchResultList } from '../apis/fetchSickSearchResultList';
+import { fetchSickSearchList } from '../apis/fetchSickSearchList';
 import { MainLayout } from '../components/MainLayout';
 import { SickSearchInput } from '../components/SickSearchInput';
 import { SickSearchItem } from '../components/SickSearchItem';
 import { SickItem } from '../model/SickItem';
 
 export function SickSearchPage() {
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [sickSearchList, setSickSearchList] = useState<SickItem[]>([]);
   const [isOpenSearch, setOpenSearch] = useState<boolean>(false);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
@@ -45,31 +45,41 @@ export function SickSearchPage() {
     }
   };
 
+  const onSearchCloseClick = () => {
+    setOpenSearch(false);
+    setSelectIndex(-1);
+  };
+
   useEffect(() => {
     (async () => {
-      const sicklist = await fetchSickSearchResultList({ keyword: searchKeyword });
-
-      if (sicklist == null) {
+      if (searchKeyword == null || searchKeyword.trim() === '') {
         return;
       }
 
-      const sickNameFilterList = await sicklist.filter((result: SickItem) =>
-        result.sickNm.match(new RegExp(searchKeyword, 'i'))
+      const sickList = await fetchSickSearchList(
+        '/sick',
+        { sickNm_like: searchKeyword },
+        { useCache: true }
       );
 
-      setSickSearchList(sickNameFilterList);
+      if (sickList == null) {
+        return;
+      }
+
+      setSickSearchList(sickList);
     })();
   }, [searchKeyword]);
 
   // 검색 결과가 없을 때
-  if (sickSearchList == null || searchKeyword.trim() === '' || sickSearchList.length === 0) {
+  if (searchKeyword.trim() === '' || sickSearchList.length === 0) {
     return (
-      <MainLayout onClick={() => setOpenSearch(false)}>
+      <MainLayout onClick={onSearchCloseClick}>
         <SickSearchInput
           onChange={e => setSearchKeyword(e.target.value)}
           onClick={onSearchInputClick}
           onKeyUp={onKeyUp}
         />
+
         {isOpenSearch && (
           <SickSearchList onClick={e => e.stopPropagation()}>
             <p css={suggestSearchKeyword}>검색어 없음</p>
@@ -81,7 +91,7 @@ export function SickSearchPage() {
 
   // 검색 결과가 있을 때
   return (
-    <MainLayout onClick={() => setOpenSearch(false)}>
+    <MainLayout onClick={onSearchCloseClick}>
       <SickSearchInput
         onChange={e => setSearchKeyword(e.target.value)}
         onClick={onSearchInputClick}
@@ -91,6 +101,7 @@ export function SickSearchPage() {
       {isOpenSearch && (
         <SickSearchList>
           <li css={suggestSearchKeyword}>추천 검색어</li>
+
           {sickSearchList.map((reslut, index) => (
             <Fragment key={reslut.sickCd}>
               <SickSearchItem
@@ -98,6 +109,7 @@ export function SickSearchPage() {
                 searchKeyword={searchKeyword}
                 selectIndex={selectIndex}
                 index={index}
+                // onMouseOver={onMouseOver}
               />
             </Fragment>
           ))}
