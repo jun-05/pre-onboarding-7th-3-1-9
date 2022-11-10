@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from 'redux/reducer/hooks';
 
 function Main() {
   const dispatch = useAppDispatch();
-  const { searchWords } = useAppSelector(state => state.searchData);
+  const { searchWords, isOnFocus } = useAppSelector(state => state.searchData);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchWords(e.currentTarget.value));
     console.log(searchWords);
@@ -21,7 +21,7 @@ function Main() {
   return (
     <S.MainLayout>
       <InputStyle onChange={onChange} onFocus={onFocusInput} onBlur={onBlur} />
-      <SearchRec />
+      {isOnFocus && <SearchRec />}
     </S.MainLayout>
   );
 }

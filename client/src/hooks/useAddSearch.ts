@@ -20,7 +20,7 @@ function useAddSearch() {
         alert(err);
       }
     };
-    const timer = setTimeout(() => onChageWords(), 1000);
+    const timer = setTimeout(() => onChageWords(), 800);
     return () => clearTimeout(timer);
   }, [dispatch, searchWords]);
 }

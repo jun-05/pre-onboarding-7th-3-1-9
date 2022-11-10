@@ -2,8 +2,9 @@ import React from 'react';
 import * as S from './MainStyle';
 import { useAppSelector } from 'redux/reducer/hooks';
 
-function InputStyle({ onChange, onFocus, onBlur }: React.InputHTMLAttributes<HTMLInputElement>) {
+function InputStyle({ onChange, onBlur, onFocus }: React.InputHTMLAttributes<HTMLInputElement>) {
   const { searchWords } = useAppSelector(state => state.searchData);
+
   return (
     <div>
       <S.MainTitle>
