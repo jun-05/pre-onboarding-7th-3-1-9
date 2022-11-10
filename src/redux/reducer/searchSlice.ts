@@ -4,12 +4,14 @@ import { createSlice } from '@reduxjs/toolkit';
 interface SerachState {
   searchWord: string;
   isLoading: boolean;
+  isAutocomplete: boolean;
 }
 
 // Define the initial state using that type
 const initialState: SerachState = {
   searchWord: '',
   isLoading: true,
+  isAutocomplete: false,
 };
 
 export const searchSlice = createSlice({
@@ -22,8 +24,11 @@ export const searchSlice = createSlice({
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+    setIsAutocomplete: (state, action) => {
+      state.isAutocomplete = action.payload;
+    },
   },
 });
 
-export const { setSearchWord, setIsLoading } = searchSlice.actions;
+export const { setSearchWord, setIsLoading, setIsAutocomplete } = searchSlice.actions;
 export default searchSlice.reducer;
