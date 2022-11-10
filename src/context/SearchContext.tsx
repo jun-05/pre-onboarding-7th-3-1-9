@@ -41,7 +41,7 @@ export function SearchProvider({
       if (isBlankVal(debouncedSearchTerm)) {
         return;
       }
-      const SearchURL = `http://localhost:4000/sick?q=${debouncedSearchTerm.trim()}`;
+      const SearchURL = `https://json-server-beryl.vercel.app/api/sick?q=${debouncedSearchTerm.trim()}`;
       const cacheData = await getSingleCacheData(debouncedSearchTerm.trim(), SearchURL);
       if (cacheData.length > 0) {
         setSickData(cacheData);

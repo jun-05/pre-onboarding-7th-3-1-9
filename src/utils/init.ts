@@ -18,7 +18,7 @@ const checkExpiration = () => {
 export default function init() {
   checkExpiration();
 
-  const httpClient = new HttpClient('http://localhost:4000/');
+  const httpClient = new HttpClient('https://json-server-beryl.vercel.app/api/');
   const serarchService = new SearchService(httpClient, 'sick');
   return { serarchService };
 }
