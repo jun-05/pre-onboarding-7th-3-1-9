@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg';
-import { useAppSelector } from '../../redux/hooks';
 
 type AutoCompleteItemProps = {
   text: string;
 };
 
 function AutoCompleteItem({ text }: AutoCompleteItemProps) {
-  const { searchWord } = useAppSelector(state => state.search);
+  
   return (
     <>
       <Wrapper>

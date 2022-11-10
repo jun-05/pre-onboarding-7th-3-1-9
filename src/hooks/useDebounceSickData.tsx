@@ -13,6 +13,7 @@ function useDebounceSickData() {
         dispatch(setIsLoading(true));
         const searchResult = await getSickData(searchWord);
         dispatch(setSickData(searchResult));
+        dispatch(setIsLoading(false));
       } catch (e) {
         dispatch(setIsLoading(false));
         alert(e);
