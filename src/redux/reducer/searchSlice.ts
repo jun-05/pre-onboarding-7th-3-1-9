@@ -3,7 +3,6 @@ import { SliceState } from '@types';
 
 const initialState: SliceState = {
   searchWord: '',
-  isLoading: false,
   isOpen: false,
   itemsLength: 0,
   selectIndex: -1,
@@ -19,9 +18,6 @@ export const SearchSlice = createSlice({
     setSearchWord: (state, action) => {
       state.searchWord = action.payload;
     },
-    setIsLoading: (state, action) => {
-      state.isLoading = action.payload;
-    },
     setIsOpen: (state, action) => {
       state.isOpen = action.payload;
     },
@@ -31,7 +27,6 @@ export const SearchSlice = createSlice({
   },
 });
 
-export const { setItemsLength, setSearchWord, setIsLoading, setIsOpen, setSelectIndex } =
-  SearchSlice.actions;
+export const { setItemsLength, setSearchWord, setIsOpen, setSelectIndex } = SearchSlice.actions;
 
 export default SearchSlice.reducer;

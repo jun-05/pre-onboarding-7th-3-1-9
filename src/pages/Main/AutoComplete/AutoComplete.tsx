@@ -1,23 +1,35 @@
+import { useEffect } from 'react';
+import useGetSickItem from 'hooks/useGetSickItem';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { setItemsLength } from 'redux/reducer/searchSlice';
 import AutoCompleteItem from 'components/blocks/AutoCompleteItem';
 import EmptyResult from 'components/blocks/EmptyResult';
-// import LoadingText from 'components/blocks/LoadingText';
 import Recommand from 'components/blocks/Recommand';
-import useGetSickItem from 'hooks/useGetSickItem';
-import { useAppSelector } from 'redux/hooks';
 
 const AutoComplete = () => {
-  const data = useGetSickItem();
   const { searchWord, selectIndex } = useAppSelector(({ search }) => search);
-  
-  // if(isLoading) return <LoadingText />
+
+  const resource = useGetSickItem(searchWord);
+  const data = resource.read();
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setItemsLength(data.length));
+  }, [dispatch, data]);
+
   return (
     <>
-      {searchWord !== '' && <Recommand searchWord={searchWord} />}
-      {/* {isLoading && <LoadingText />} */}
+      {data.length > 0 && searchWord !== '' && <Recommand searchWord={searchWord} />}
       {data.map(({ sickNm }, index) => {
         const textArray = sickNm.split(searchWord);
         return (
-          <AutoCompleteItem key={index} index={index} searchWord={searchWord} selectIndex={selectIndex} textArray={textArray} />
+          <AutoCompleteItem
+            key={index}
+            index={index}
+            searchWord={searchWord}
+            selectIndex={selectIndex}
+            textArray={textArray}
+          />
         );
       })}
       {data.length === 0 && <EmptyResult />}

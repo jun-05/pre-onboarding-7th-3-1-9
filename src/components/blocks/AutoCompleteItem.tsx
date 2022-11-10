@@ -1,5 +1,5 @@
 import { ReactComponent as Magnifying } from 'assets/Magnifying.svg';
-import { DropDownItem } from "pages/Main/AutoComplete/styles";
+import { DropDownItem } from 'pages/Main/AutoComplete/styles';
 
 const AutoCompleteItem = ({
   index,
@@ -20,7 +20,7 @@ const AutoCompleteItem = ({
       {textArray.map((item, i) => (
         <span key={i} className="search_text">
           {item}
-          {i !== textArray.length - 1 && <span className='font_bold'>{searchWord}</span>}
+          {i !== textArray.length - 1 && <span className="font_bold">{searchWord}</span>}
         </span>
       ))}
     </DropDownItem>

@@ -1,38 +1,32 @@
-import { ISicks } from '@types';
+import { IResultItems } from '@types';
 import { getSick } from 'apis/ClinicalService';
-import { AxiosError } from 'axios';
-import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { setIsLoading, setItemsLength } from '../redux/reducer/searchSlice';
+import { wrapPromise } from 'apis/wrapPromise';
+import { useEffect, useMemo, useState } from 'react';
+import { useAppDispatch } from 'redux/hooks';
 
-const useGetSickItem = () => {
+const useGetSickItem = (searchWord: string) => {
   const dispatch = useAppDispatch();
-  const { searchWord } = useAppSelector(({ search }) => search);
-
-  const [items, setItems] = useState<ISicks[]>([]);
+  const initItems = useMemo(() => {
+    return {
+      read: () => [],
+    };
+  }, []);
+  const [items, setItems] = useState<IResultItems>(initItems);
 
   useEffect(() => {
-    const getSickName = async () => {
-      try {
-        dispatch(setIsLoading(true));
-        const searchResult = await getSick(searchWord);
-        setItems(searchResult);
-        dispatch(setItemsLength(searchResult.length));
-        dispatch(setIsLoading(false));
-      } catch (err) {
-        dispatch(setIsLoading(false));
+    if (searchWord === null || searchWord.trim() === '') {
+      setItems(initItems);
+      return;
+    }
 
-        if (err instanceof AxiosError) {
-          console.error(err.response?.data);
-        } else {
-          console.error(err);
-        }
-      }
+    const getSickName = () => {
+      const searchResult = getSick(searchWord);
+      setItems(wrapPromise(searchResult));
     };
     const delay = setTimeout(() => getSickName(), 300);
 
     return () => clearTimeout(delay);
-  }, [searchWord, dispatch]);
+  }, [searchWord, dispatch, initItems]);
 
   return items;
 };

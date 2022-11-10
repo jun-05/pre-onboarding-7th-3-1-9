@@ -1,4 +1,4 @@
-import { DropDownItem } from "pages/Main/AutoComplete/styles";
+import { DropDownItem } from 'pages/Main/AutoComplete/styles';
 
 const EmptyResult = () => {
   return (
@@ -6,6 +6,6 @@ const EmptyResult = () => {
       <span className="search_text">검색어가 없습니다</span>
     </DropDownItem>
   );
-}
+};
 
 export default EmptyResult;

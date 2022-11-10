@@ -9,7 +9,6 @@ export const getSick = async (param: string): Promise<ISicks[]> => {
     const payload = {
       sickNm_like: param,
     };
-
     const queryStr = new URLSearchParams(payload).toString();
     const cacheStorage = await caches.open(URL_SICK);
     const cachedResponse = await cacheStorage.match(queryStr);
