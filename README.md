@@ -11,7 +11,7 @@ cacheStorage에 특정 이름(sick)으로 cach를 open한다
 - case 1. cacheStorage에 검색 결과가 없을 경우 
 서버주소로 get요청을 보내서 받아온 데이터를 cacheStorage에  sickNm_like_keyword 항목을 생성하고 응답 결과를 저장한다.
 
-- case 1. cacheStorage에 검색 결과가 존재할 경우 
+- case 2. cacheStorage에 검색 결과가 존재할 경우 
 캐시에서 항목을 찾기 위해 match 메서드를 사용하고 일치하는 항목이 발견되면 Promise를 반환한다. 반환한 프로미스를 리턴해준다.
 
 ## Q2. 입력마다 API 호출하지 않도록 API 호출 횟수를 줄이는 방법
