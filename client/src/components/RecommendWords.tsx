@@ -13,9 +13,12 @@ function RecommendWords() {
     <div>
       {searchData.map(({ sickNm }, idx) => {
         return (
-          <S.recomText key={idx}>
-            <span> {sickNm}</span>
-          </S.recomText>
+          <>
+            <S.recomText key={idx}>
+              <S.recomIcon />
+              <S.recomTexts>{sickNm}</S.recomTexts>
+            </S.recomText>
+          </>
         );
       })}
     </div>

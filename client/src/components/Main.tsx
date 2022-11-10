@@ -18,9 +18,15 @@ function Main() {
   const onBlur = () => {
     dispatch(setOnFocus(false));
   };
+
   return (
     <S.MainLayout>
-      <InputStyle onChange={onChange} onFocus={onFocusInput} onBlur={onBlur} />
+      <InputStyle
+        onChange={onChange}
+        onFocus={onFocusInput}
+        onBlur={onBlur}
+        className={isOnFocus ? 'active' : ''}
+      />
       {isOnFocus && <SearchRec />}
     </S.MainLayout>
   );

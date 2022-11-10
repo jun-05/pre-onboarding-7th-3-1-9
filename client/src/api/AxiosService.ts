@@ -19,11 +19,12 @@ export const AxiosService = {
           params: query,
         };
         const { data } = await instance.get(`/${END_POINT}`, config);
+        console.info('calling api');
+
         cashStorage.put(`${param}`, new Response(JSON.stringify(data)));
         return data;
       }
       const newCached = await cashedResponse?.json();
-      console.log(newCached);
 
       return newCached;
     }

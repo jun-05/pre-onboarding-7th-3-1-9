@@ -10,9 +10,11 @@ export const GlobalStyles = createGlobalStyle`
   html {
     width: 1440px;
     margin: 0 auto;
+
   }
   html, body, div#root {
     height: auto;
+  
     
   }
   body {

@@ -1,25 +1,32 @@
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
-export const MainLayout = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+export const MainPageLaout = styled.div`
   margin: auto;
+  img {
+    width: 100%;
+  }
+`;
+
+export const MainLayout = styled.div`
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  margin-top: 0px;
+  padding-top: 100px;
   width: 100%;
-  height: 450px;
+  height: 500px;
   background-color: #cbe9ff;
 `;
 
 export const MainTitle = styled.h1`
-  margin-top: 50px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
 `;
 
 export const MainSearchInputBox = styled.div`
+  border: ${props => (props.className === `active` ? '2px solid #007be9' : '')};
   width: 450px;
   height: 70px;
   margin: auto;
@@ -74,4 +81,22 @@ export const recomText = styled.div`
   font-weight: 300;
   margin-top: 10px;
   color: #555;
+  display: flex;
+  align-items: center;
+  gap: 30;
+`;
+
+export const recomTexts = styled.span`
+  font-weight: 400;
+  color: #000;
+`;
+
+export const recomIcon = styled(BiSearch)`
+  width: 20px;
+  padding: 5px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: #007be9;
+  color: #fff;
+  margin-right: 10px;
 `;

@@ -14,7 +14,6 @@ function useAddSearch() {
         dispatch(setLoading(true));
         const getWords = await getCashSearch(searchWords);
         dispatch(setSearchData(getWords));
-        console.log(getWords);
       } catch (err) {
         dispatch(setLoading(false));
         alert(err);

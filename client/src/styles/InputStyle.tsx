@@ -2,7 +2,12 @@ import React from 'react';
 import * as S from './MainStyle';
 import { useAppSelector } from 'redux/reducer/hooks';
 
-function InputStyle({ onChange, onBlur, onFocus }: React.InputHTMLAttributes<HTMLInputElement>) {
+function InputStyle({
+  onChange,
+  onBlur,
+  onFocus,
+  className,
+}: React.InputHTMLAttributes<HTMLInputElement>) {
   const { searchWords } = useAppSelector(state => state.searchData);
 
   return (
@@ -10,7 +15,7 @@ function InputStyle({ onChange, onBlur, onFocus }: React.InputHTMLAttributes<HTM
       <S.MainTitle>
         국내 모든 임상시험 검색하고 <br /> 온라인으로 참여하기
       </S.MainTitle>
-      <S.MainSearchInputBox>
+      <S.MainSearchInputBox className={className}>
         <S.MainSearchInputStyle
           onChange={onChange}
           onFocus={onFocus}
