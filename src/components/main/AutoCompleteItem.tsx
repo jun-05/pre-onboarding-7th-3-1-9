@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg';
 import { useAppSelector } from '../../redux/hooks';
-import  ParseSearchWordBold  from './ParseSearchWordBold';
+import ParseSearchWordBold from './ParseSearchWordBold';
 
 type AutoCompleteItemProps = {
   text: string;
 };
 
 function AutoCompleteItem({ text }: AutoCompleteItemProps) {
-  const { searchWord } = useAppSelector(state=>state.search);
+  const { searchWord } = useAppSelector(state => state.search);
 
   return (
     <>
       <Wrapper>
         <StyledSearchIcon />
         <SearchResultWord>
-          <ParseSearchWordBold searchWord={searchWord} text={text}/>
-          </SearchResultWord>
+          <ParseSearchWordBold searchWord={searchWord} text={text} />
+        </SearchResultWord>
       </Wrapper>
     </>
   );
