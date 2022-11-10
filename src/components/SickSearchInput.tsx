@@ -54,7 +54,7 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 1px 1.5px #007be9;
+    box-shadow: 0px 0px 1px 2px #007be9;
   }
 
   &::-webkit-search-cancel-button {
