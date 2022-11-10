@@ -54,8 +54,9 @@ export function SearchProvider({
     };
     if (debouncedSearchTerm) {
       getSick();
+    } else {
+      setSickData([]);
     }
-    setSickData([]);
   }, [SearchService, debouncedSearchTerm]);
 
   return <SearchContext.Provider value={state}>{children}</SearchContext.Provider>;
