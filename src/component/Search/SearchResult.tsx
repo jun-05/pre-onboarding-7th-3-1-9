@@ -2,7 +2,7 @@ import React from 'react';
 import tw from 'tailwind-styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useSearchContext } from './../../context/SearchContext';
-import { setTextBold } from '../../utils/text';
+import { parseTextBold } from '../../utils/text';
 
 type SearchResultProps = {
   sickName: string;
@@ -16,7 +16,7 @@ const SearchResult = ({ sickName, selected = false, handleSelected }: SearchResu
   return (
     <SearchResultBlock $selected={selected} onClick={handleSelected}>
       <AiOutlineSearch />
-      <div dangerouslySetInnerHTML={{ __html: setTextBold(sickName, inputValue) }}></div>
+      <div dangerouslySetInnerHTML={{ __html: parseTextBold(sickName, inputValue) }}></div>
     </SearchResultBlock>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import tw from 'tailwind-styled-components';
 import SearchResult from './SearchResult';
 import { sick } from '../../models/type';
-import { useSelectVal } from '../../hooks/useInputValue';
+import { useSelectVal } from '../../hooks/useSelectVal';
 
 type SearchListProps = {
   sickData: sick[];
