@@ -1,4 +1,6 @@
-export interface autoDatas {
+import {Dispatch, SetStateAction} from 'react'
+
+export interface IAutoDatas {
   sickCd: string;
   sickNm: string;
 }
@@ -12,11 +14,18 @@ export interface IAutoSearchData {
   selectIndex: number;
   index: number
   name: string;
-  setKeyword: any;
+  setKeyword: Dispatch<SetStateAction<string>>;
 }
 
 export interface IProps {
-  keyItems: autoDatas[];
+  keyItems: IAutoDatas[];
   selectIndex: number;
-  setKeyword: any;
+  setKeyword: Dispatch<SetStateAction<string>>;
+}
+
+
+export interface ISearch{
+  keyword : string;
+  onChangeData: any;
+  onKeyUp : any;
 }

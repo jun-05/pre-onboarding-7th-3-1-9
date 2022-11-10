@@ -1,4 +1,4 @@
-import {instance} from './axiosInstance';
+import {axiosInstance} from './axiosInstance';
 
 export interface ISicks {
   sickCd: string;
@@ -24,7 +24,7 @@ export const getSick = async (param: string): Promise<ISicks[]> => {
           q : param
         },
       };
-      const { data } = await instance.get(`/${URL_SICK}`, config);
+      const { data } = await axiosInstance.get(`/${URL_SICK}`, config);
       const resultData = data.slice(0, 7);
       cacheStorage.put(queryStr, new Response(JSON.stringify(resultData)));
       return resultData;

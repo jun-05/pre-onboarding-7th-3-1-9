@@ -2,12 +2,12 @@ import React, { KeyboardEvent, useState, useEffect } from 'react';
 import Title from './components/Title'
 import SearchBar from './components/SearchBar';
 import { getSick } from './api/cache';
-import { autoDatas } from './interface/types';
+import { IAutoDatas } from './interface/types';
 import AutoSearchDataContainer from './container/AutoSearchDataContainer/AutoSearchDataContainer';
 import { Layout, SearchContainer } from './components/style';
 const App = () => {
   const [keyword, setKeyword] = useState<string>("");
-  const [keyItems, setKeyItems] = useState<autoDatas[]>([]);
+  const [keyItems, setKeyItems] = useState<IAutoDatas[]>([]);
   const [selectIndex, setSelectIndex] = useState<number>(-1);
 
   const onKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {

@@ -1,12 +1,6 @@
 import {InputWrapper, Search, IconWrapper,BlueBox} from './style'
 import SearchIcon from '../../assets/SearchIcon'
-
-interface ISearch{
-  keyword : string;
-  onChangeData: any;
-  onKeyUp : any;
-}
-
+import { ISearch } from '../../interface/types'
 
 const SearchBar = ({keyword, onChangeData, onKeyUp}:ISearch) => {
   return(

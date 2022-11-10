@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-export const instance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: 'http://localhost:4000/',
   timeout: 5000,
 });
 
-instance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   config => {
-    console.info('calling api');
+    console.info('API 호출 횟수');
     return config;
   },
   error => {
     return Promise.reject(error.response);
   }
 );
-instance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   response => {
     return response;
   },
