@@ -29,8 +29,8 @@ cacheStorage에 특정 이름(sick)으로 cach를 open한다
     }
   }, [keyword])
 ```
-만약 setTimeout없이 계속 keyword가 있을때마다 getSick()함수를 호출한다면 예를들어 담낭를 검색한다면
-ㄷ ㅏ ㅁ ㄴ ㅏ ㅇ 총 6번을 호출 하므로 딜레이(0.2초)를 두어  API 호출 횟수를 줄였다.
+만약 setTimeout없이 keyword의 변경이 있을때마다 getSick()함수를 호출한다면 담낭을 검색한다면
+ㄷ ㅏ ㅁ ㄴ ㅏ ㅇ 총 6번을 호출 하므로 setTimeout으로 딜레이(0.2초)를 두어  API 호출 횟수를 줄였다.
 
 
 ## Q3. 키보드로 추천 검색어로 이동하는 방법
