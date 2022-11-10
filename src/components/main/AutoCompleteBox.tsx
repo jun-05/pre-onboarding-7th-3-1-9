@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import AutoCompleteItemList from './AutoCompleteItemList';
 
 function AutoCompleteBox() {
- 
   return (
     <Wrapper>
       <Label>추천검색어</Label>
-      <AutoCompleteItemList/>
+      <AutoCompleteItemList />
     </Wrapper>
   );
 }

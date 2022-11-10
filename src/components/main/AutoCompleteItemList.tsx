@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../../redux/hooks';
 import AutoCompleteItem from './AutoCompleteItem';
 
 function AutoCompleteItemList() {
   const { isLoading, sickData } = useAppSelector(state => state.search);
-  
-  if(sickData.length === 0) return (<Msg>검색어가 없습니다.</Msg>)
-  else if (isLoading) return (<Msg>데이터를 불러오는 중입니다...</Msg>)
-  else return (
-    <SearchWordsWrapper>
+
+  if (sickData.length === 0) return <Msg>검색어가 없습니다.</Msg>;
+  else if (isLoading) return <Msg>데이터를 불러오는 중입니다...</Msg>;
+  else
+    return (
+      <SearchWordsWrapper>
         {sickData.map(({ sickNm }, idx) => {
           return (
             <>
@@ -18,7 +19,7 @@ function AutoCompleteItemList() {
           );
         })}
       </SearchWordsWrapper>
-  )
+    );
 }
 
 const SearchWordsWrapper = styled.div`
@@ -34,4 +35,4 @@ const Msg = styled.h4`
   margin: 20px 0px;
 `;
 
-export default AutoCompleteItemList
+export default AutoCompleteItemList;

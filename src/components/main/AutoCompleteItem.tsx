@@ -6,7 +6,6 @@ type AutoCompleteItemProps = {
 };
 
 function AutoCompleteItem({ text }: AutoCompleteItemProps) {
-  
   return (
     <>
       <Wrapper>
