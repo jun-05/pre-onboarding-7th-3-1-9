@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useDebounce } from '../hooks/useDebounce';
 import { SearchState, sick } from '../models/type';
