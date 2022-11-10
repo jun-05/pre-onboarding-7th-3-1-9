@@ -1,16 +1,22 @@
 import React from 'react';
 import tw from 'tailwind-styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { useSearchContext } from './../../context/SearchContext';
+import { setTextBold } from '../../utils/text';
 
 type SearchResultProps = {
   sickName: string;
   selected?: boolean;
+  handleSelected: (value: string) => void;
 };
 
-const SearchResult = ({ sickName, selected = false }: SearchResultProps) => {
+const SearchResult = ({ sickName, selected = false, handleSelected }: SearchResultProps) => {
+  const { inputValue } = useSearchContext();
+
   return (
-    <SearchResultBlock $selected={selected}>
-      <AiOutlineSearch /> <div>{sickName}</div>
+    <SearchResultBlock $selected={selected} onClick={handleSelected}>
+      <AiOutlineSearch />
+      <div dangerouslySetInnerHTML={{ __html: setTextBold(sickName, inputValue) }}></div>
     </SearchResultBlock>
   );
 };
@@ -18,16 +24,16 @@ const SearchResultBlock = tw.div<any>`
 flex
 items-center
 
-
-
 text-lg
 font-medium
 mt-2
 px-5
+rounded-sm
+cursor-pointer
 
 [&>div]:pl-2
-rounded-sm
-
+last:mb-4
+hover:bg-gray-200
 ${p => (p.$selected ? 'bg-gray-200 outline outline-2 outline-gray-400' : '')}
 `;
 

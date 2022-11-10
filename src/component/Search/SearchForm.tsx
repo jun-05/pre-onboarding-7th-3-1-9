@@ -1,14 +1,16 @@
 import React from 'react';
 import tw from 'tailwind-styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { useSearchContext } from './../../context/SearchContext';
 
 const SearchForm = () => {
+  const { setSearchInput } = useSearchContext();
   return (
     <SearchFormBlock>
       <SearchIconBlock>
         <AiOutlineSearch />
       </SearchIconBlock>
-      <SearchInputBlock placeholder="질환명을 입력해주세요" type="text" />
+      <SearchInputBlock placeholder="질환명을 입력해주세요" type="text" onChange={setSearchInput} />
       <SearchFormButton>검색</SearchFormButton>
     </SearchFormBlock>
   );
