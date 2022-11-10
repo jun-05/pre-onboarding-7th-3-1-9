@@ -1,9 +1,6 @@
 import { TitleWrapper } from "./style"
+import { ITitle } from "../../interface/types"
 
-interface ITitle {
-  topContent : string,
-  bottomContent : string
-}
 
 const Title = ({topContent, bottomContent}:ITitle) => {
   return (
