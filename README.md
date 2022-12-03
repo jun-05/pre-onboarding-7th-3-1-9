@@ -1,3 +1,29 @@
+# 검색창 구현 + 검색어 추천 기능 구현
+
+## 배포 페이지
+
+https://pre-onboarding-7th-3-1-9-june.vercel.app/
+
+## 요구기능 
+
+공통 사항 : 주어진 디자인 클론
+
+1. 질환명 검색시 API 호출을 통해 검색어 추천 기능 구현
+  - 사용자가 입력한 텍스트와 일치하는 부분 볼드처리
+  - 검색어가 없을 시 "검색어 없음" 표시
+2. API 호출 최적화
+  - API 호출별로 로컬 캐싱 구현(Lib 사용금지)
+  - 입력마다 API가 호출되지 않도록 구현
+3. 키보드만으로 추천 검색어들로 이동 가능하도록 구현
+
+## 사용 스택
+
+- React JS
+- TypeScript
+- ContextAPI
+- TailwindCSS
+- Tailwind-Styled-Component
+
 ## 1. commit msg 규칙
 
 ⭐ feat : 새로운 기능에 대한 커밋
